@@ -11,7 +11,9 @@ export default new DataSource({
   synchronize: false,
   migrationsRun: true,
   logging: ['query', 'error', 'log'],
-  entities: [process.env.DB_TYPEORM_ENTITIES || 'src/**/*.entity.ts'],
-  migrations: [process.env.DB_TYPEORM_MIGRATIONS || 'src/migrations/**/*.ts'],
-  subscribers: [process.env.DB_TYPEORM_SUBSCRIBERS || 'src/subscriber/**/*.ts'],
+  entities: [process.env.DB_TYPEORM_ENTITIES || 'dist/**/*.entity.js'],
+  migrations: [process.env.DB_TYPEORM_MIGRATIONS || 'dist/migrations/**/*.js'],
+  subscribers: [
+    process.env.DB_TYPEORM_SUBSCRIBERS || 'dist/subscriber/**/*.js',
+  ],
 });
