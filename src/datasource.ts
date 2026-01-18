@@ -2,8 +2,12 @@ import { DataSource } from 'typeorm';
 
 export default new DataSource({
   migrationsTableName: 'migrations',
-  type: 'sqlite',
-  database: './data/api-template.sqlite',
+  type: 'postgres',
+  url: process.env.DATABASE_URL,
+  ssl:
+    process.env.NODE_ENV === 'production'
+      ? { rejectUnauthorized: false }
+      : false,
   synchronize: false,
   migrationsRun: true,
   logging: ['query', 'error', 'log'],
